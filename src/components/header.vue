@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <header class="header">
-      <a class="logo">
+      <router-link to="/" class="logo">
         <img src="../assets/img/icon/logo.svg" alt="Logo" />
-      </a>
+      </router-link>
       <label class="address">
         <input
           type="text"

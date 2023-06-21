@@ -1,10 +1,12 @@
 <template>
-  <div id="app">
-    <headerComponent />
-    <!-- <router-link to="/about">About</router-link> -->
-    <router-view />
+  <v-app id="app">
+    <v-main class="main">
+      <headerComponent />
+      <router-view />
+    </v-main>
+
     <footerComponent />
-  </div>
+  </v-app>
 </template>
 <script>
 import headerComponent from "@/components/header.vue";
