@@ -30,7 +30,7 @@
         </label>
       </div>
       <div class="cards cards-restaurants">
-        <restaurant v-for="restoran in restorans" :key="restoran.title" :restoran="restoran" />
+        <restaurant v-for="restoran in getRestorans" :key="restoran.title" :restoran="restoran" />
       </div>
     </section>
   </div>
@@ -38,6 +38,7 @@
 
 <script>
 import restaurant from "@/components/restaurant.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "HomeView",
@@ -68,62 +69,9 @@ export default {
         text: "Скидки на сеты до 30 мая по промокоду DADADA",
       },
     ],
-    restorans: [
-      {
-        link: "/restaurant/pizza-plus",
-        image: require("../assets/img/pizza-plus/preview.jpg"),
-        title: "Пицца плюс",
-        tag: "50 мин",
-        rating: "4.5",
-        price: "От 900 ₽",
-        category: "Пицца",
-      },
-      {
-        link: "/restaurant/tanuki",
-        image: require("../assets/img/tanuki/preview.jpg"),
-        title: "Тануки",
-        tag: "60 мин",
-        rating: "4.5",
-        price: "От 1 200 ₽",
-        category: "Суши, роллы",
-      },
-      {
-        link: "/restaurant/food-band",
-        image: require("../assets/img/food-band/preview.jpg"),
-        title: "FoodBand",
-        tag: "40 мин",
-        rating: "4.5",
-        price: "От 450 ₽",
-        category: "Пицца",
-      },
-      {
-        link: "/restaurant/palki-skalki",
-        image: require("../assets/img/palki-skalki/preview.jpg"),
-        title: "Палки скалки",
-        tag: "55 мин",
-        rating: "4.5",
-        price: "От 500 ₽",
-        category: "Пицца",
-      },
-      {
-        link: "/restaurant/gusi-lebedi",
-        image: require("../assets/img/gusi-lebedi/preview.jpg"),
-        title: "Гуси Лебеди",
-        tag: "75 мин",
-        rating: "4.5",
-        price: "От 1 000 ₽",
-        category: "Русская кухня",
-      },
-      {
-        link: "/restaurant/pizza-burger",
-        image: require("../assets/img/pizza-burger/preview.jpg"),
-        title: "PizzaBurger",
-        tag: "45 мин",
-        rating: "4.5",
-        price: "От 700 ₽",
-        category: "Пицца",
-      },
-    ],
   }),
+  computed: {
+    ...mapGetters(["getRestorans"]),
+  },
 };
 </script>

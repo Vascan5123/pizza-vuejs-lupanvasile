@@ -2,13 +2,14 @@
   <div class="container">
     <section class="menu">
       <div class="section-heading">
-        <h2 class="section-title restaurant-title">Пицца Плюс</h2>
+        <h2 class="section-title restaurant-title">
+          {{ RestourantSelected.title }}
+        </h2>
         <div class="card-info">
-          <div class="rating">4.5</div>
-          <div class="price">От 900 ₽</div>
-          <div class="category">Пицца</div>
+          <div class="rating">{{ RestourantSelected.rating }}</div>
+          <div class="price">{{ RestourantSelected.price }}</div>
+          <div class="category">{{ RestourantSelected.category }}</div>
         </div>
-        <!-- /.card-info -->
       </div>
       <div class="cards cards-menu">
         <div class="card">
@@ -21,14 +22,12 @@
             <div class="card-heading">
               <h3 class="card-title card-title-reg">Пицца Везувий</h3>
             </div>
-            <!-- /.card-heading -->
             <div class="card-info">
               <div class="ingredients">
                 Соус томатный, сыр «Моцарелла», ветчина, пепперони, перец
                 «Халапенье», соус «Тобаско», томаты.
               </div>
             </div>
-            <!-- /.card-info -->
             <div class="card-buttons">
               <button class="button button-primary button-add-cart">
                 <span class="button-card-text">В корзину</span>
@@ -37,9 +36,7 @@
               <strong class="card-price-bold">545 ₽</strong>
             </div>
           </div>
-          <!-- /.card-text -->
         </div>
-        <!-- /.card -->
 
         <div class="card">
           <img
@@ -193,3 +190,19 @@
     </section>
   </div>
 </template>
+<script>
+import { mapGetters } from "vuex";
+
+export default {
+  name: "RestaurantView",
+  mounted() {},
+  computed: {
+    ...mapGetters(["getRestorans"]),
+    RestourantSelected() {
+      return this.getRestorans.filter((restourant) =>
+        restourant.link.includes(this.$route.params.title)
+      )[0];
+    },
+  },
+};
+</script>
