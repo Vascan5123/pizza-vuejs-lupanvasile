@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    user: localStorage.getItem("user"),
     restorans: [
       {
         link: "/restaurant/pizza-plus",
@@ -64,8 +65,22 @@ export default new Vuex.Store({
   },
   getters: {
     getRestorans: (state) => state.restorans,
+    getUser: (state) => state.user,
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    SetUser(state, payload) {
+      state.user = payload;
+    },
+  },
+  actions: {
+    Login({ commit}) {
+      localStorage.setItem("user", true);
+      commit("SetUser", true);
+    },
+    Logout({ commit}) {
+      localStorage.setItem("user", false);
+      commit("SetUser", false);
+    },
+  },
   modules: {},
 });

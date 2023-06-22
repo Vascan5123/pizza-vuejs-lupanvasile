@@ -1,22 +1,45 @@
 <template>
   <v-app id="app">
     <v-main class="main">
-      <headerComponent />
+      <headerComponent @auth="OpenModalAuth()" @card="OpenModalCard()" />
       <router-view />
     </v-main>
-
+    <authModal :show="showAuth" @closeAuth="CloseModalAuth()" />
+    <cardModal :show="showCard" @closeCard="CloseModalCard()" />
     <footerComponent />
   </v-app>
 </template>
 <script>
 import headerComponent from "@/components/header.vue";
 import footerComponent from "@/components/footer.vue";
+import authModal from "@/components/auth.vue";
+import cardModal from "@/components/card.vue";
 
 export default {
   name: "App",
   components: {
     headerComponent,
     footerComponent,
+    authModal,
+    cardModal,
+  },
+  data: () => ({
+    showAuth: false,
+    showCard: false,
+  }),
+  methods: {
+    OpenModalAuth() {
+      this.showAuth = true;
+    },
+    CloseModalAuth() {
+      this.showAuth = false;
+    },
+    OpenModalCard(){
+      this.showCard = true;
+    },
+    CloseModalCard() {
+      this.showCard = false;
+    },
   },
 };
 </script>
@@ -166,12 +189,10 @@ button {
 }
 
 .button-cart {
-  display: none;
   margin: 0 5px;
 }
 
 .button-out {
-  display: none;
   margin: 0 5px;
 }
 
@@ -434,7 +455,6 @@ button {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
-  display: none;
   z-index: 999;
 }
 
@@ -445,7 +465,6 @@ button {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
-  display: none;
   z-index: 999;
 }
 
