@@ -61,9 +61,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.button-login[disabled] {
-  opacity: .7;
-}
-</style>

@@ -13,6 +13,7 @@
       <div class="card-buttons">
         <button
           class="button button-primary button-add-cart"
+          :disabled="!getUser"
           @click="addItemToCart(pizza.id)"
         >
           <span class="button-card-text">В корзину</span>
@@ -26,11 +27,16 @@
   </div>
 </template>
   
-  <script>
+<script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "PizzaComponent",
   props: {
     pizza: Object,
+  },
+  computed: {
+    ...mapGetters(["getUser"]),
   },
   methods: {
     addItemToCart(id) {
@@ -39,6 +45,3 @@ export default {
   },
 };
 </script>
-  
-  <style>
-</style>

@@ -34,7 +34,7 @@ export default {
     CloseModalAuth() {
       this.showAuth = false;
     },
-    OpenModalCard(){
+    OpenModalCard() {
       this.showCard = true;
     },
     CloseModalCard() {
@@ -148,6 +148,11 @@ button {
 
 .button-card-text {
   margin-right: 10px;
+}
+
+.button-login[disabled],
+.button-add-cart[disabled] {
+  opacity: 0.7;
 }
 
 .button-auth {
