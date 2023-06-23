@@ -10,199 +10,62 @@
           <div class="price">{{ RestourantSelected.price }}</div>
           <div class="category">{{ RestourantSelected.category }}</div>
         </div>
+        <div class="sorting">
+          <button class="button" @click="sort = 'max'">Сначала дорогие</button>
+          <button class="button" @click="sort = 'min'">Сначала дешевые</button>
+        </div>
       </div>
       <div class="cards cards-menu">
-        <div class="card">
-          <img
-            src="../assets/img/pizza-plus/pizza-vesuvius.jpg"
-            alt="image"
-            class="card-image"
-          />
-          <div class="card-text">
-            <div class="card-heading">
-              <h3 class="card-title card-title-reg">Пицца Везувий</h3>
-            </div>
-            <div class="card-info">
-              <div class="ingredients">
-                Соус томатный, сыр «Моцарелла», ветчина, пепперони, перец
-                «Халапенье», соус «Тобаско», томаты.
-              </div>
-            </div>
-            <div class="card-buttons">
-              <button class="button button-primary button-add-cart">
-                <span class="button-card-text">В корзину</span>
-                <span class="button-cart-svg"></span>
-              </button>
-              <strong class="card-price-bold">545 ₽</strong>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <img
-            src="../assets/img/pizza-plus/pizza-girls.jpg"
-            alt="image"
-            class="card-image"
-          />
-          <div class="card-text">
-            <div class="card-heading">
-              <h3 class="card-title card-title-reg">Пицца Девичник</h3>
-            </div>
-            <!-- /.card-heading -->
-            <div class="card-info">
-              <div class="ingredients">
-                Соус томатный, постное тесто, нежирный сыр, кукуруза, лук,
-                маслины, грибы, помидоры, болгарский перец.
-              </div>
-            </div>
-            <!-- /.card-info -->
-            <div class="card-buttons">
-              <button class="button button-primary button-add-cart">
-                <span class="button-card-text">В корзину</span>
-                <span class="button-cart-svg"></span>
-              </button>
-              <strong class="card-price-bold">450 ₽</strong>
-            </div>
-          </div>
-          <!-- /.card-text -->
-        </div>
-        <!-- /.card -->
-
-        <div class="card">
-          <img
-            src="../assets/img/pizza-plus/pizza-oleole.jpg"
-            alt="image"
-            class="card-image"
-          />
-          <div class="card-text">
-            <div class="card-heading">
-              <h3 class="card-title card-title-reg">Пицца Оле-Оле</h3>
-            </div>
-            <!-- /.card-heading -->
-            <div class="card-info">
-              <div class="ingredients">
-                Соус томатный, сыр «Моцарелла», черри, маслины, зелень, майонез
-              </div>
-            </div>
-            <!-- /.card-info -->
-            <div class="card-buttons">
-              <button class="button button-primary button-add-cart">
-                <span class="button-card-text">В корзину</span>
-                <span class="button-cart-svg"></span>
-              </button>
-              <strong class="card-price-bold">440 ₽</strong>
-            </div>
-          </div>
-          <!-- /.card-text -->
-        </div>
-        <!-- /.card -->
-
-        <div class="card">
-          <img
-            src="../assets/img/pizza-plus/pizza-plus.jpg"
-            alt="image"
-            class="card-image"
-          />
-          <div class="card-text">
-            <div class="card-heading">
-              <h3 class="card-title card-title-reg">Пицца Плюс</h3>
-            </div>
-            <!-- /.card-heading -->
-            <div class="card-info">
-              <div class="ingredients">
-                Соус томатный, сыр «Моцарелла», сыр «Чеддер», томаты, пепперони,
-                телятина, грибы, бекон, болгарский перец.
-              </div>
-            </div>
-            <!-- /.card-info -->
-            <div class="card-buttons">
-              <button class="button button-primary button-add-cart">
-                <span class="button-card-text">В корзину</span>
-                <span class="button-cart-svg"></span>
-              </button>
-              <strong class="card-price-bold">805 ₽</strong>
-            </div>
-          </div>
-          <!-- /.card-text -->
-        </div>
-        <!-- /.card -->
-
-        <div class="card">
-          <img
-            src="../assets/img/pizza-plus/pizza-hawaiian.jpg"
-            alt="image"
-            class="card-image"
-          />
-          <div class="card-text">
-            <div class="card-heading">
-              <h3 class="card-title card-title-reg">Пицца Гавайская</h3>
-            </div>
-            <!-- /.card-heading -->
-            <div class="card-info">
-              <div class="ingredients">
-                Соус томатный, сыр «Моцарелла», ветчина, ананасы
-              </div>
-            </div>
-            <!-- /.card-info -->
-            <div class="card-buttons">
-              <button class="button button-primary button-add-cart">
-                <span class="button-card-text">В корзину</span>
-                <span class="button-cart-svg"></span>
-              </button>
-              <strong class="card-price-bold">440 ₽</strong>
-            </div>
-          </div>
-          <!-- /.card-text -->
-        </div>
-        <!-- /.card -->
-
-        <div class="card">
-          <img
-            src="../assets/img/pizza-plus/pizza-classic.jpg"
-            alt="image"
-            class="card-image"
-          />
-          <div class="card-text">
-            <div class="card-heading">
-              <h3 class="card-title card-title-reg">Пицца Классика</h3>
-            </div>
-            <!-- /.card-heading -->
-            <div class="card-info">
-              <div class="ingredients">
-                Соус томатный, сыр «Моцарелла», сыр «Пармезан», ветчина, салями,
-                грибы.
-              </div>
-            </div>
-            <!-- /.card-info -->
-            <div class="card-buttons">
-              <button class="button button-primary button-add-cart">
-                <span class="button-card-text">В корзину</span>
-                <span class="button-cart-svg"></span>
-              </button>
-              <strong class="card-price-bold">510 ₽</strong>
-            </div>
-          </div>
-          <!-- /.card-text -->
-        </div>
-        <!-- /.card -->
+        <pizza v-for="p in PizzaSort" :key="p.id" :pizza="p" />
       </div>
-      <!-- /.cards -->
     </section>
   </div>
 </template>
 <script>
+import pizza from "@/components/pizza.vue";
 import { mapGetters } from "vuex";
 
 export default {
   name: "RestaurantView",
-  mounted() {},
+  components: {
+    pizza,
+  },
+  data: () => ({
+    sort: "none",
+  }),
   computed: {
-    ...mapGetters(["getRestorans"]),
+    ...mapGetters(["getRestorans", "getPizza"]),
     RestourantSelected() {
       return this.getRestorans.filter((restourant) =>
         restourant.link.includes(this.$route.params.title)
       )[0];
     },
+    PizzaSort() {
+      if (this.sort == "max") {
+        return this.getPizza.slice().sort((a, b) => {
+          return (
+            Number(b.price.replace(/[^+\d]/g, "")) -
+            Number(a.price.replace(/[^+\d]/g, ""))
+          );
+        });
+      } else if (this.sort == "min") {
+        return this.getPizza.slice().sort((a, b) => {
+          return (
+            Number(a.price.replace(/[^+\d]/g, "")) -
+            Number(b.price.replace(/[^+\d]/g, ""))
+          );
+        });
+      } else {
+        return this.getPizza;
+      }
+    },
   },
 };
 </script>
+
+<style scoped>
+.sorting {
+  display: flex;
+  margin-left: auto;
+}
+</style>

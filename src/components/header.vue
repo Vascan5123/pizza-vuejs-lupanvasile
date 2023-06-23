@@ -62,4 +62,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style>
+.button-login[disabled] {
+  opacity: .7;
+}
+</style>

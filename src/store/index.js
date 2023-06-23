@@ -62,24 +62,93 @@ export default new Vuex.Store({
         category: "Пицца",
       },
     ],
+    pizza: [
+      {
+        id: "0",
+        image: require("../assets/img/pizza-plus/pizza-vesuvius.jpg"),
+        title: "Пицца Везувий",
+        ingredients:
+          "Соус томатный, сыр «Моцарелла», ветчина, пепперони, перец «Халапенье», соус «Тобаско», томаты.",
+        price: "545 ₽",
+      },
+      {
+        id: "1",
+        image: require("../assets/img/pizza-plus/pizza-girls.jpg"),
+        title: "Пицца Девичник",
+        ingredients:
+          "Соус томатный, постное тесто, нежирный сыр, кукуруза, лук, маслины, грибы, помидоры, болгарский перец.",
+        price: "450 ₽",
+      },
+      {
+        id: "2",
+        image: require("../assets/img/pizza-plus/pizza-oleole.jpg"),
+        title: "Пицца Оле-Оле",
+        ingredients:
+          "Соус томатный, сыр «Моцарелла», черри, маслины, зелень, майонез",
+        price: "440 ₽",
+      },
+      {
+        id: "3",
+        image: require("../assets/img/pizza-plus/pizza-plus.jpg"),
+        title: "Пицца Плюс",
+        ingredients:
+          "Соус томатный, сыр «Моцарелла», сыр «Чеддер», томаты, пепперони, телятина, грибы, бекон, болгарский перец.",
+        price: "805 ₽",
+      },
+      {
+        id: "4",
+        image: require("../assets/img/pizza-plus/pizza-hawaiian.jpg"),
+        title: "Пицца Гавайская",
+        ingredients: "Соус томатный, сыр «Моцарелла», ветчина, ананасы",
+        price: "440 ₽",
+      },
+      {
+        id: "5",
+        image: require("../assets/img/pizza-plus/pizza-classic.jpg"),
+        title: "Пицца Классика",
+        ingredients:
+          "Соус томатный, сыр «Моцарелла», сыр «Пармезан», ветчина, салями, грибы.",
+        price: "510 ₽",
+      },
+    ],
+    card: localStorage.getItem("card")
+      ? JSON.parse(localStorage.getItem("card"))
+      : {},
   },
   getters: {
     getRestorans: (state) => state.restorans,
     getUser: (state) => state.user,
+    getPizza: (state) => state.pizza,
   },
   mutations: {
     SetUser(state, payload) {
       state.user = payload;
     },
+    SetCard(state, payload) {
+      state.card = payload;
+    },
   },
   actions: {
-    Login({ commit}) {
+    Login({ commit }) {
       localStorage.setItem("user", true);
       commit("SetUser", true);
     },
-    Logout({ commit}) {
+    Logout({ commit }) {
       localStorage.setItem("user", false);
       commit("SetUser", false);
+    },
+    AddToCard({ commit }, payload) {
+      if (payload) {
+        let card = {};
+        if (localStorage.getItem("card")) {
+          card = JSON.parse(localStorage.getItem("card"));
+          card[payload] = card[payload] ? card[payload] + 1 : 1;
+        } else {
+          card[payload] = 1;
+        }
+        localStorage.setItem("card", JSON.stringify(card));
+        commit("SetCard", card);
+      }
     },
   },
   modules: {},
