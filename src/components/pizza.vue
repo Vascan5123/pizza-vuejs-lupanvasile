@@ -1,13 +1,13 @@
 <template>
   <div class="card">
-    <img :src="pizza.image" alt="image" class="card-image" />
+    <img :src="require('../assets/' + pizza.image)" alt="image" class="card-image" />
     <div class="card-text">
       <div class="card-heading">
-        <h3 class="card-title card-title-reg">{{ pizza.title }}</h3>
+        <h3 class="card-title card-title-reg">{{ pizza.name }}</h3>
       </div>
       <div class="card-info">
         <div class="ingredients">
-          {{ pizza.ingredients }}
+          {{ pizza.description }}
         </div>
       </div>
       <div class="card-buttons">
@@ -20,7 +20,7 @@
           <span class="button-cart-svg"></span>
         </button>
         <strong class="card-price-bold">
-          {{ pizza.price }}
+          {{ pizza.price }} ₽
         </strong>
       </div>
     </div>

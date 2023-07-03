@@ -3,12 +3,12 @@
     <section class="menu">
       <div class="section-heading">
         <h2 class="section-title restaurant-title">
-          {{ RestourantSelected.title }}
+          {{ RestourantSelected.name }}
         </h2>
         <div class="card-info">
-          <div class="rating">{{ RestourantSelected.rating }}</div>
-          <div class="price">{{ RestourantSelected.price }}</div>
-          <div class="category">{{ RestourantSelected.category }}</div>
+          <div class="rating">{{ RestourantSelected.stars }}</div>
+          <div class="price">От {{ RestourantSelected.price }} ₽</div>
+          <div class="category">{{ RestourantSelected.kitchen }}</div>
         </div>
         <div class="sorting">
           <button class="button" @click="sort = 'max'">Сначала дорогие</button>
@@ -37,26 +37,20 @@ export default {
     ...mapGetters(["getRestorans", "getPizza"]),
     RestourantSelected() {
       return this.getRestorans.filter((restourant) =>
-        restourant.link.includes(this.$route.params.title)
+        restourant.products.includes(this.$route.params.title)
       )[0];
     },
     PizzaSort() {
       if (this.sort == "max") {
-        return this.getPizza.slice().sort((a, b) => {
-          return (
-            Number(b.price.replace(/[^+\d]/g, "")) -
-            Number(a.price.replace(/[^+\d]/g, ""))
-          );
+        return this.getPizza[this.$route.params.title].slice().sort((a, b) => {
+          return b.price - a.price;
         });
       } else if (this.sort == "min") {
-        return this.getPizza.slice().sort((a, b) => {
-          return (
-            Number(a.price.replace(/[^+\d]/g, "")) -
-            Number(b.price.replace(/[^+\d]/g, ""))
-          );
+        return this.getPizza[this.$route.params.title].slice().sort((a, b) => {
+          return a.price - b.price;
         });
       } else {
-        return this.getPizza;
+        return this.getPizza[this.$route.params.title];
       }
     },
   },

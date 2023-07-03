@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
         <div class="food-row" v-for="itemCard in Card" :key="itemCard.id">
-          <span class="food-name">{{ itemCard.title }}</span>
+          <span class="food-name">{{ itemCard.name }}</span>
           <strong class="food-price">{{ itemCard.price }}</strong>
           <div class="food-counter">
             <button class="counter-button" @click="RemoveTovar(itemCard.id)">
@@ -50,27 +50,27 @@ export default {
   computed: {
     ...mapGetters(["getCard", "getPizza"]),
     Card() {
-      let kol_vo = Object.values(this.getCard);
-      let Order = this.getPizza
-        .filter((prod) =>
-          Object.keys(this.getCard)
-            .map((g) => Number(g))
-            .includes(Number(prod["id"]))
-        )
-        .map((c, i) => {
-          c.count = kol_vo[i];
+      let kol_vo = this.getCard;
+      let Order = Object.values(this.getPizza)
+        .flat()
+        .filter((el) => el.id)
+        .filter((prod) => Object.keys(this.getCard).includes(prod["id"]))
+        .map((c) => {
+          c.count = kol_vo[c.id];
           return c;
         });
       return Order;
     },
     Price() {
       let price = 0;
-      let kol_vo = Object.values(this.getCard);
-      this.getPizza.forEach((element, i) => {
-        price +=
-          Number(element["price"].replace(" ₽", "")) *
-          (kol_vo[i] ? kol_vo[i] : 0);
-      });
+      let kol_vo = this.getCard;
+      Object.values(this.getPizza)
+        .flat()
+        .filter((el) => el.id)
+        .filter((prod) => Object.keys(this.getCard).includes(prod["id"]))
+        .forEach(element => {
+          price += element["price"] * (kol_vo[element.id] ? kol_vo[element.id] : 0);
+        });
       return price + " ₽";
     },
   },

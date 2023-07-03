@@ -1,15 +1,15 @@
 <template>
-  <router-link :to="restoran.link" class="card card-restaurant">
-    <img :src="restoran.image" alt="image" class="card-image" />
+  <router-link :to="'/restaurant/' + restoran.products.replace('.json', '')" class="card card-restaurant">
+    <img :src="require('../assets/' + restoran.image)" alt="image" class="card-image" />
     <div class="card-text">
       <div class="card-heading">
-        <h3 class="card-title">{{ restoran.title }}</h3>
-        <span class="card-tag tag">{{ restoran.tag }}</span>
+        <h3 class="card-title">{{ restoran.name }}</h3>
+        <span class="card-tag tag">{{ restoran.time_of_delivery }} мин</span>
       </div>
       <div class="card-info">
-        <div class="rating">{{ restoran.rating }}</div>
-        <div class="price">{{ restoran.price }}</div>
-        <div class="category">{{ restoran.category }}</div>
+        <div class="rating">{{ restoran.stars }}</div>
+        <div class="price">От {{ restoran.price }} ₽</div>
+        <div class="category">{{ restoran.kitchen }}</div>
       </div>
     </div>
   </router-link>

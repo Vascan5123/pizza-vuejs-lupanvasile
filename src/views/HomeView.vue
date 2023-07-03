@@ -30,7 +30,7 @@
         </label>
       </div>
       <div class="cards cards-restaurants">
-        <restaurant v-for="restoran in getRestorans" :key="restoran.title" :restoran="restoran" />
+        <restaurant v-for="restoran in getRestorans" :key="restoran.name" :restoran="restoran" />
       </div>
     </section>
   </div>
